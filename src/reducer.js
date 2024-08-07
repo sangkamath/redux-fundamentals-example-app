@@ -50,6 +50,19 @@ export default function appReducer(state = initialState, action) {
                 }),
             }
         }
+        case 'filters/statusFilterChanged': {
+            return {
+                // Copy the whole state
+                ...state,
+                // Overwrite the filters value
+                filters: {
+                    // copy the other filter fields
+                    ...state.filters,
+                    // And replace the status field with the new value
+                    status: action.payload,
+                },
+            }
+        }
         default:
             return state
     }
